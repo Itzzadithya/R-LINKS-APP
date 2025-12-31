@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-LINKS | Smart Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <section id="landingPage" class="active-section">
+        <div class="glass-container center-content">
+            <h1 class="brand-title">R-LINK~S</h1>
+            <h4>Futuristic</h4>
+            <p>Next Gen Link Management System </p>
+            <button class="cta-btn" onclick="enterDashboard()">
+                Initialize System <i class="fa-solid fa-power-off"></i>
+            </button>
+        </div>
+    </section>
+
+    <section id="dashboard" class="hidden-section">
+        <nav class="glass-nav">
+            <div class="logo">R-LINK~S <span class="version">v1.0</span></div>
+            
+            <button class="app-exit-btn" onclick="exitApp()" title="Exit Application">
+                <i class="fa-solid fa-power-off"></i>
+            </button>
+        </nav>
+
+        <div class="main-content">
+            <div class="glass-panel input-panel">
+                <div class="panel-header-small">
+                    <h3>New Entry</h3>
+                    <button class="toggle-options-btn" onclick="toggleOptions()">
+                        <i class="fa-solid fa-sliders"></i> Manual Options
+                    </button>
+                </div>
+
+                <div class="input-row">
+                    <input type="url" id="linkInput" placeholder="Paste URL (e.g., https://google.com)...">
+                    <button class="add-btn" onclick="addLink()">ADD</button>
+                </div>
+
+                <div id="manualOptions" class="manual-row hidden">
+                    <input type="text" id="manualName" placeholder="Custom Name (Optional)">
+                    <select id="manualCategory">
+                        <option value="Auto">Auto Detect</option>
+                        <option value="Work">Work</option>
+                        <option value="Stream">Stream</option>
+                        <option value="AI Chatbot">AI Chatbot</option>
+                        <option value="Dev">Dev</option>
+                        <option value="Social">Social</option>
+                        <option value="Cloud">Cloud</option>
+                    </select>
+                </div>
+                <small id="statusMsg">System detects category automatically.</small>
+            </div>
+
+            <div class="glass-panel recent-panel">
+                <div class="panel-header">
+                    <h3>Recent Uploads</h3>
+                    <button class="view-all-text-btn" onclick="openAllLinks()">View Database</button>
+                </div>
+                <div id="recentLinksList" class="links-container">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="allLinksOverlay" class="glass-overlay">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2>Database</h2>
+                <button class="close-overlay-btn" onclick="closeAllLinks()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <input type="text" id="searchBar" placeholder="Search R-LINKS..." onkeyup="renderAllLinks()">
+            <div id="allLinksList" class="links-container scrollable">
+                </div>
+        </div>
+    </div>
+
+    <div id="editModal" class="glass-overlay">
+        <div class="overlay-content small-modal">
+            <h3>Modify Link</h3>
+            <input type="hidden" id="editId">
+            <label>Name</label>
+            <input type="text" id="editName" class="modal-input">
+            <label>URL</label>
+            <input type="url" id="editUrl" class="modal-input">
+            <label>Category</label>
+            <select id="editCategory" class="modal-input">
+                <option value="Stream">Stream</option>
+                <option value="AI Chatbot">AI Chatbot</option>
+                <option value="Dev">Dev</option>
+                <option value="Social">Social</option>
+                <option value="Work">Work</option>
+                <option value="Cloud">Cloud</option>
+                <option value="Other">Other</option>
+            </select>
+            <div class="modal-actions">
+                <button class="cancel-btn" onclick="closeEditModal()">Cancel</button>
+                <button class="save-btn" onclick="saveEdit()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
