@@ -8,4 +8,3 @@ Click the button below to download the app for Android:
 
 # NOTE : To preview and allow this app installation on your mobile you must  allow permission in settings "Allow from this source" toggle On
 ---updated will come soon
-do it soon
